@@ -7,6 +7,8 @@ const Endereco = require('../../app/modell/insert/endereco');
 const Instituicao = require('../../app/modell/insert/instituicao');
 const Associacao = require('../../app/modell/insert/associacao');
 const Ponto = require('../../app/modell/insert/ponto');
+const Receita = require('../../app/modell/insert/receita');
+const Despesas = require('../../app/modell/insert/despesas');
 const authmiddlle = require('../../app/middlle/auth')
 
 //enviar json via json
@@ -112,5 +114,37 @@ router.post("/ponto",function ponto(req, res){
 })
 // Rota de ponto Fim //
 
+// Rota de Receita Inicio //
+router.post("/receita",function receita(req, res){
+  Receita.create({
+    Nome_destinatario: req.body.Nome_destinatario,
+    Nome_origem: req.body.Nome_origem,
+    Valor: req.body.Valor,
+    mes: req.body.mes
+  }).then(function(data){
+    res.json("Sucesso"+data)
+  }).catch(function(erro){
+    res.json("Erro "+ erro)
+  })
+})
+// Rota de Receita Fim //
+
+// Rota de Receita Inicio //
+router.post("/despesas",function despesas(req, res){
+  Despesas.create({
+    Nome_destinatario: req.body.Nome_destinatario,
+    Nome_origem: req.body.Nome_origem,
+    Valor: req.body.Valor,
+    mes: req.body.mes
+  }).then(function(data){
+    res.json("Sucesso"+data)
+  }).catch(function(erro){
+    res.json("Erro "+ erro)
+  })
+})
+// Rota de Receita Fim //
+
 //export route//
 module.exports = router
+
+
